@@ -179,6 +179,7 @@ return [
          * Custom Service Providers...
          */
         \App\Providers\VerifyEthSignatureProvider::class,
+        \App\Providers\MetadataGeneratorProvider::class,
     ],
 
     /*

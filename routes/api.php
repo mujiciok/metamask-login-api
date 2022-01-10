@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MetadataController;
 use App\Http\Controllers\MetamaskLoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -18,9 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('metamask-auth', [MetamaskLoginController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function () {
+// @TODO commented for browser testing on generate metadata endpoint
+//Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('users')->group(function () {
         Route::get('{user}', [UserController::class, 'show']);
     });
-});
+    Route::prefix('metadatas')->group(function () {
+        Route::get('{nft}/generate', [MetadataController::class, 'generate']);
+        Route::post('{nft}', [MetadataController::class, 'store']);
+    });
+//});
 

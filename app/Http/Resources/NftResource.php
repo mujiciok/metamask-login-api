@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class NftResource extends JsonResource
 {
     /**
      * @param Request $request
@@ -15,10 +15,9 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'email' => $this->email,
-            'eth_address' => $this->eth_address,
-            'nfts' => new NftCollection($this->whenLoaded('nfts')),
+            'user_id' => $this->user_id,
+            'image_url' => $this->image_url,
+            'metadata' => new MetadataResource($this->whenLoaded('metadata')),
         ];
     }
 }
