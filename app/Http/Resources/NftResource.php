@@ -16,8 +16,8 @@ class NftResource extends JsonResource
         return [
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'image_url' => $this->image_url,
-            'metadata' => new MetadataResource($this->whenLoaded('metadata')),
+            'file' => FileResource::make($this->whenLoaded('file')),
+            'metadata' => MetadataResource::make($this->whenLoaded('metadata')),
         ];
     }
 }

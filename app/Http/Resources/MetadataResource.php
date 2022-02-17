@@ -23,7 +23,7 @@ class MetadataResource extends JsonResource
             'external_url' => $this->external_url,
             'animation_url' => $this->animation_url,
             'youtube_url' => $this->youtube_url,
-            'attributes' => new MetadataAttributeCollection($this->attributes),
+            'attributes' => MetadataAttributeCollection::make($this->attributes),
         ];
     }
 }

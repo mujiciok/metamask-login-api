@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNftsTable extends Migration
+class CreateFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateNftsTable extends Migration
      */
     public function up()
     {
-        Schema::create('nfts', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->unsignedSmallInteger('status');
-            $table->string('metadata_url')->nullable();
-            $table->string('file_url')->nullable();
+            $table->foreignId('nft_id');
+            $table->string('name');
+            $table->unsignedInteger('size');
+            $table->string('mime_type');
+            $table->string('path');
             $table->timestamps();
 
-            $table->foreign('user_id')
-                ->references('id')->on('users')
+            $table->foreign('nft_id')
+                ->references('id')->on('nfts')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -34,6 +35,6 @@ class CreateNftsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nfts');
+        Schema::dropIfExists('files');
     }
 }

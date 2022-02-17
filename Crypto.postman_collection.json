@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "a3cf425a-8bd6-4125-a6cd-49d2c50dae66",
+		"name": "Crypto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.environment.set(\"crypto-api-token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "address",
+									"value": "0x48be24b5ea86f39da0bb6240c3bbb4b03c85e276",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "I agree with all possible Terms&Conditions!",
+									"type": "text"
+								},
+								{
+									"key": "signature",
+									"value": "0xf6e26cef4fb30a6fb5fb4d3f1e7bb62e0c7f8c85792a320f3b5fd79ce2eb01252289c5624170e45d9375d78c87348de9511b34961ef2efc1a7300efbab675c701c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{crypto-api-url}}/metamask-auth",
+							"host": [
+								"{{crypto-api-url}}"
+							],
+							"path": [
+								"metamask-auth"
+							]
+						},
+						"description": "http://crypto-api.test/api/metamask-auth"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crypto-api-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{crypto-api-url}}/users/1",
+							"host": [
+								"{{crypto-api-url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Nft",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crypto-api-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/mircea/Pictures/Images/file_example_JPG_100kB.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{crypto-api-url}}/nfts",
+							"host": [
+								"{{crypto-api-url}}"
+							],
+							"path": [
+								"nfts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crypto-api-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{crypto-api-url}}/nfts/1",
+							"host": [
+								"{{crypto-api-url}}"
+							],
+							"path": [
+								"nfts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Metadata",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crypto-api-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test metadata",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "http://url/to/image",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "test metadata description",
+									"type": "text"
+								},
+								{
+									"key": "background_color",
+									"value": "c3c3c3",
+									"type": "text"
+								},
+								{
+									"key": "external_url",
+									"value": "http://external/url",
+									"type": "text"
+								},
+								{
+									"key": "animation_url",
+									"value": "http://animation/url",
+									"type": "text"
+								},
+								{
+									"key": "youtube_url",
+									"value": "http://youtube/url",
+									"type": "text"
+								},
+								{
+									"key": "attributes[0][trait_type]",
+									"value": "power",
+									"type": "text"
+								},
+								{
+									"key": "attributes[0][value]",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "attributes[0][display_type]",
+									"value": "number",
+									"type": "text"
+								},
+								{
+									"key": "attributes[1][trait_type]",
+									"value": "health",
+									"type": "text"
+								},
+								{
+									"key": "attributes[1][value]",
+									"value": "75",
+									"type": "text"
+								},
+								{
+									"key": "attributes[1][display_type]",
+									"value": "boost_percentage",
+									"type": "text"
+								},
+								{
+									"key": "attributes[2][trait_type]",
+									"value": "birthday",
+									"type": "text"
+								},
+								{
+									"key": "attributes[2][value]",
+									"value": "1546360800",
+									"type": "text"
+								},
+								{
+									"key": "attributes[2][display_type]",
+									"value": "date",
+									"type": "text"
+								},
+								{
+									"key": "attributes[3][trait_type]",
+									"value": "intellect",
+									"type": "text"
+								},
+								{
+									"key": "attributes[3][value]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "attributes[4][value]",
+									"value": "generation 1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{crypto-api-url}}/metadatas/1",
+							"host": [
+								"{{crypto-api-url}}"
+							],
+							"path": [
+								"metadatas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{crypto-api-token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{crypto-api-url}}/metadatas/1/generate",
+							"host": [
+								"{{crypto-api-url}}"
+							],
+							"path": [
+								"metadatas",
+								"1",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -35,6 +35,10 @@ class MetadataController extends Controller
             ->generate()
             ->save();
 
+        $nft->update([
+            'metadata_url' => $metadataGenerator->getUrl(),
+        ]);
+
         return $metadataGenerator->getUrl();
     }
 }

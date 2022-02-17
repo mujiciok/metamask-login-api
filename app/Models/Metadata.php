@@ -15,6 +15,7 @@ class Metadata extends Model
 
     protected $fillable = [
         'nft_id',
+        'status',
         'name',
         'image',
         'description',

@@ -18,7 +18,7 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'eth_address' => $this->eth_address,
-            'nfts' => new NftCollection($this->whenLoaded('nfts')),
+            'nfts' => NftCollection::make($this->whenLoaded('nfts')),
         ];
     }
 }
