@@ -1,8 +1,9 @@
 ## About 
 
-"Metamask login API" is an example of integration of metamask login in a Laravel project. It serves as an API for the "Metamask login VUE" project.
+**Metamask login API** is an example of integration of metamask login in a Laravel project.  
+It serves as an API for the **Metamask login VUE** project.
 
-###Features to be implemented:
+### Features to be implemented:
 
 - [x] Authentication with Metamask 
 - [x] NFT store (file upload + DB insert)
